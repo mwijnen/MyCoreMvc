@@ -1,0 +1,11 @@
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\bin\Debug\netcoreapp2.0\MyCoreMvc.deps.json
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\bin\Debug\netcoreapp2.0\MyCoreMvc.runtimeconfig.json
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\bin\Debug\netcoreapp2.0\MyCoreMvc.runtimeconfig.dev.json
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\bin\Debug\netcoreapp2.0\MyCoreMvc.dll
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\bin\Debug\netcoreapp2.0\MyCoreMvc.pdb
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\obj\Debug\netcoreapp2.0\MyCoreMvc.csproj.CoreCompileInputs.cache
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\obj\Debug\netcoreapp2.0\MyCoreMvc.AssemblyInfoInputs.cache
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\obj\Debug\netcoreapp2.0\MyCoreMvc.AssemblyInfo.cs
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\obj\Debug\netcoreapp2.0\MyCoreMvc.dll
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\obj\Debug\netcoreapp2.0\MyCoreMvc.pdb
+C:\Users\wijne\Desktop\MyCoreMvc\MyCoreMvc\obj\Debug\netcoreapp2.0\MyCoreMvc.csprojResolveAssemblyReference.cache
