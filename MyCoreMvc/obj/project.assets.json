@@ -13243,7 +13243,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wijne\\.nuget\\packages\\": {},
+    "C:\\Users\\MWijnen\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13252,17 +13252,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\wijne\\Desktop\\MyCoreMvc\\MyCoreMvc\\MyCoreMvc.csproj",
+      "projectUniqueName": "C:\\Users\\MWijnen\\Desktop\\MyCoreMvc\\MyCoreMvc\\MyCoreMvc.csproj",
       "projectName": "MyCoreMvc",
-      "projectPath": "C:\\Users\\wijne\\Desktop\\MyCoreMvc\\MyCoreMvc\\MyCoreMvc.csproj",
-      "packagesPath": "C:\\Users\\wijne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wijne\\Desktop\\MyCoreMvc\\MyCoreMvc\\obj\\",
+      "projectPath": "C:\\Users\\MWijnen\\Desktop\\MyCoreMvc\\MyCoreMvc\\MyCoreMvc.csproj",
+      "packagesPath": "C:\\Users\\MWijnen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MWijnen\\Desktop\\MyCoreMvc\\MyCoreMvc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\wijne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MWijnen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
