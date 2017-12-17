@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MyCoreMvc.Models
 {
-    public static class SeedDatabase
+    public static class SeedApplicationDb
     {
         public static void EnsurePopulated(ApplicationDbContext context)
         {

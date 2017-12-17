@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using MyCoreMvc.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MyCoreMvc
 {
@@ -26,8 +27,9 @@ namespace MyCoreMvc
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Products:ConnectionString"]));
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\MWijnen\\Documents\\Projects\\MyCoreMvcDevelopment.mdf;Integrated Security=True;Connect Timeout=30"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Application:ConnectionString"]));
+
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:Identity:ConnectionString"]));
 
             services.AddTransient<IRepository, EFRepository>();
             services.AddMvc();

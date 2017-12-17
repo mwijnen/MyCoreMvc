@@ -12,7 +12,7 @@ namespace MyCoreMvc.Models
         public EFRepository(ApplicationDbContext context)
         {
             this.context = context;
-            SeedDatabase.EnsurePopulated(context);
+            SeedApplicationDb.EnsurePopulated(context);
         }
 
         public IEnumerable<Post> Posts => context.Posts;
