@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 
 namespace MyCoreMvc.Models
 {
-    public interface IProductRepository
+    public interface IRepository
     {
-        IEnumerable<Product> Products { get; }
+        IEnumerable<Post> Posts { get; }
+
+        IEnumerable<Comment> Comments { get; }
+
     }
 }

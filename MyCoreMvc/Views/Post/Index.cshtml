@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Post>
+
+@foreach (var p in Model)
+{
+    <div>
+        <h3>@p.Title</h3>
+        @p.Author
+        <h4>@p.SubTitle</h4>
+    </div>
+}

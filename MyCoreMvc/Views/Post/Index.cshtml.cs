@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MyCoreMvc.Views.Product
+namespace MyCoreMvc.Views.Post
 {
     public class IndexModel : PageModel
     {

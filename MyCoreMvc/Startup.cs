@@ -29,7 +29,7 @@ namespace MyCoreMvc
             //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Products:ConnectionString"]));
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\MWijnen\\Documents\\Projects\\MyCoreMvcDevelopment.mdf;Integrated Security=True;Connect Timeout=30"));
 
-            services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddTransient<IRepository, EFRepository>();
             services.AddMvc();
         }
 
@@ -46,15 +46,13 @@ namespace MyCoreMvc
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Product}/{action=Index}/{id?}");
+                    template: "{controller=Post}/{action=Index}/{id?}");
             });
-            //}
-
+            
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
             //});
-            SeedData.EnsurePopulated(app);
         }
     }
 }
