@@ -11,6 +11,7 @@ using MyCoreMvc.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace MyCoreMvc
 {
@@ -31,6 +32,8 @@ namespace MyCoreMvc
 
             services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:Identity:ConnectionString"]));
 
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>();
+
             services.AddTransient<IRepository, EFRepository>();
             services.AddMvc();
         }
@@ -44,6 +47,7 @@ namespace MyCoreMvc
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+            app.UseIdentity();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

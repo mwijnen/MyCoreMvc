@@ -10,7 +10,7 @@ using System;
 namespace MyCoreMvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171217180002_Initial")]
+    [Migration("20171217204541_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
