@@ -14,14 +14,14 @@ namespace MyCoreMvc.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     Abstract = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
+                    Body = table.Column<string>(nullable: true),
                     CategoryId = table.Column<string>(nullable: true),
-                    Contents = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
-                    LastUpdated = table.Column<DateTime>(nullable: false),
+                    CreatedByUserId = table.Column<string>(nullable: true),
                     SubTitle = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
-                    UpdatedBy = table.Column<string>(nullable: true)
+                    Updated = table.Column<DateTime>(nullable: false),
+                    UpdatedByUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,9 +35,10 @@ namespace MyCoreMvc.Migrations
                     Id = table.Column<string>(nullable: false),
                     Contents = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
-                    LastUpdated = table.Column<DateTime>(nullable: false),
+                    CreatedByUserId = table.Column<string>(nullable: true),
                     PostId = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    Updated = table.Column<DateTime>(nullable: false),
+                    UpdatedByUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -10,7 +10,7 @@ using System;
 namespace MyCoreMvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171217173212_Initial")]
+    [Migration("20171217180002_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,11 +29,13 @@ namespace MyCoreMvc.Migrations
 
                     b.Property<DateTime>("Created");
 
-                    b.Property<DateTime>("LastUpdated");
+                    b.Property<string>("CreatedByUserId");
 
                     b.Property<string>("PostId");
 
-                    b.Property<string>("UserId");
+                    b.Property<DateTime>("Updated");
+
+                    b.Property<string>("UpdatedByUserId");
 
                     b.HasKey("Id");
 
@@ -49,21 +51,21 @@ namespace MyCoreMvc.Migrations
 
                     b.Property<string>("Abstract");
 
-                    b.Property<string>("Author");
+                    b.Property<string>("Body");
 
                     b.Property<string>("CategoryId");
 
-                    b.Property<string>("Contents");
-
                     b.Property<DateTime>("Created");
 
-                    b.Property<DateTime>("LastUpdated");
+                    b.Property<string>("CreatedByUserId");
 
                     b.Property<string>("SubTitle");
 
                     b.Property<string>("Title");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<DateTime>("Updated");
+
+                    b.Property<string>("UpdatedByUserId");
 
                     b.HasKey("Id");
 

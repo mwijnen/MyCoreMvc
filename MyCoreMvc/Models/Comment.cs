@@ -5,12 +5,8 @@ using System.Threading.Tasks;
 
 namespace MyCoreMvc.Models
 {
-    public class Comment
-    {
-        public string Id { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime LastUpdated { get; set; }
-        public string UserId { get; set; }
+    public class Comment : StampedRecord
+    {        
         public string Contents { get; set; }
 
         public string PostId { get; set; }
