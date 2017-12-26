@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace MyCoreMvc
 {
@@ -54,7 +56,17 @@ namespace MyCoreMvc
                     name: "default",
                     template: "{controller=Post}/{action=Index}/{id?}");
             });
-            
+
+            //MW: serving files for twitter bootstrap when in development mode - Add support for node_modules but only during development **temporary**
+            if (env.IsDevelopment())
+            {
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
+                    RequestPath = new PathString("/vendor")
+                });
+            }
+
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");

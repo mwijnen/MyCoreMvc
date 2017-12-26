@@ -1,0 +1,10 @@
+//https://wildermuth.com/2017/11/19/ASP-NET-Core-2-0-and-the-End-of-Bower
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "3.3.7"
+  }
+}
