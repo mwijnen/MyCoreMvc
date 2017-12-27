@@ -1,10 +1,14 @@
-//https://wildermuth.com/2017/11/19/ASP-NET-Core-2-0-and-the-End-of-Bower
 {
   "version": "1.0.0",
   "name": "asp.net",
   "private": true,
   "devDependencies": {
     "jquery": "^3.2.1",
-    "bootstrap": "3.3.7"
+    "bootstrap": "3.3.7",
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.1",
+    "gulp-cssmin": "0.1.7",
+    "gulp-uglify": "2.0.1",
+    "rimraf": "2.6.1"
   }
 }
