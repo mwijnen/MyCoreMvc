@@ -10,7 +10,9 @@ Security:
 [ ] Security (authentication and identification, create SSL certificate, setup TLS)
 [ ] Multi factor authentication
 [ ] Third party authentication
-
+[ ] Protection for XSS attacks by using/implementing the equivalent of Rails authentication_token
+[ ] Implement sand for passwords to protect against rainbow attacks
+ 
 Layout:
 [ ] Create basic layout using twitter.bootstrap (Navigation, Default pages, Header, Footer, Columns, Theme)
 
@@ -21,11 +23,14 @@ Generic Functionality:
 [ ] Send email
 [ ] Push notifications (Websockets)
 [ ] AJAX requests
+[ ] notifications, alerts, messages
 
 Specific Functionality:
 [ ] CRUD blog
 [ ] CRUD comments
-
+[ ] implement routing
+[ ] implement routing tags for forms
+ 
 Database stucture:
 [ ] Setup CRUD operations
 [ ] Understand how does linking of objects work (Ruby has_many equivalent)

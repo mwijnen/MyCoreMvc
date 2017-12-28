@@ -3,15 +3,15 @@ using MyCoreMvc.Models;
 
 namespace MyCoreMvc.Controllers
 {
-    public class PostController : Controller
+    public class CommentsController : Controller
     {
         private IRepository repository;
 
-        public PostController(IRepository repository)
+        public CommentsController(IRepository repository)
         {
             this.repository = repository;
         }
 
-        public ViewResult Index() => View(repository.Posts);
+        public ViewResult Index() => View(repository.Comments);
     }
 }

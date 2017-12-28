@@ -54,7 +54,7 @@ namespace MyCoreMvc
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Post}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             //MW: serving files for twitter bootstrap when in development mode - Add support for node_modules but only during development **temporary**
