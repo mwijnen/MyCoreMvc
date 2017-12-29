@@ -1,31 +1,35 @@
 ﻿@model IEnumerable<Post>
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>VersionId</th>
-        <th>DateTimeStamp</th>
-        <th>UserId</th>
-        <th>Deleted</th>
-        <th>Title</th>
-        <th>Subtitle</th>
-        <th>Category</th>
-        <th>Abstract</th>
-        <th>Body</th>
-    </tr>
-    @foreach (var p in Model)
-    {
+<table class="table table-striped table-bordered table-hover">
+    <thead>
         <tr>
-            <td>@p.Id</td>
-            <td>@p.VersionId</td>
-            <td>@p.DateTimeStamp.ToString()</td>
-            <td>@p.UserId</td>
-            <td>@p.Deleted.ToString()</td>
-            <td>@p.Title</td>
-            <td>@p.Subtitle</td>
-            <td>@p.CategoryId</td>
-            <td>@p.Abstract</td>
-            <td>@p.Body</td>
+            <th>Id</th>
+            <th>Version Id</th>
+            <th>Date Time Stamp</th>
+            <th>User Id</th>
+            <th>Deleted</th>
+            <th>Title</th>
+            <th>Subtitle</th>
+            <th>Category</th>
+            <th>Abstract</th>
+            <th>Body</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.VersionId</td>
+                <td>@p.DateTimeStamp.ToString()</td>
+                <td>@p.UserId</td>
+                <td>@p.Deleted.ToString()</td>
+                <td>@p.Title</td>
+                <td>@p.Subtitle</td>
+                <td>@p.CategoryId</td>
+                <td>@p.Abstract</td>
+                <td>@p.Body</td>
+            </tr>
+        }
+    </tbody>
 </table>

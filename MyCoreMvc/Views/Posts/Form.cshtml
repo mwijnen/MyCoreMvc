@@ -1,25 +1,25 @@
 ﻿@model Post
 
-<form asp-controller="Posts" asp-action="Create" method="post">
-    <p>
+<form asp-controller="Posts" asp-action="Create" method="post" class="form-group">
+    <div class="form-group">
         <label asp-for="Title">Title:</label>
-        <input asp-for="Title" />
-    </p>
+        <input asp-for="Title" placeholder="Title" />
+    </div>
 
-    <p>
+    <div class="form-group">
         <label asp-for="Subtitle">Subtitle:</label>
         <input asp-for="Subtitle" />
-    </p>
+    </div>
 
-    <p>
+    <div class="form-group">
         <label asp-for="Abstract">Abstract:</label>
         <input asp-for="Abstract" />
-    </p>
+    </div>
 
-    <p>
+    <div class="form-group">
         <label asp-for="Body">Body:</label>
         <input asp-for="Body" />
-    </p>
-    <button type="submit">Submit</button>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
