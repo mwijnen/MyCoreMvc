@@ -1,12 +1,31 @@
 ﻿@model IEnumerable<Post>
 
-@foreach (var p in Model)
-{
-    <div>
-        <h3>@p.Title</h3>
-        @p.CreatedByUserId
-        <h4>@p.SubTitle</h4>
-    </div>
-}
-
-<a 
+<table>
+    <tr>
+        <th>Id</th>
+        <th>VersionId</th>
+        <th>DateTimeStamp</th>
+        <th>UserId</th>
+        <th>Deleted</th>
+        <th>Title</th>
+        <th>Subtitle</th>
+        <th>Category</th>
+        <th>Abstract</th>
+        <th>Body</th>
+    </tr>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Id</td>
+            <td>@p.VersionId</td>
+            <td>@p.DateTimeStamp.ToString()</td>
+            <td>@p.UserId</td>
+            <td>@p.Deleted.ToString()</td>
+            <td>@p.Title</td>
+            <td>@p.Subtitle</td>
+            <td>@p.CategoryId</td>
+            <td>@p.Abstract</td>
+            <td>@p.Body</td>
+        </tr>
+    }
+</table>

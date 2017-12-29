@@ -14,10 +14,10 @@ namespace MyCoreMvc.Models
         {
             if (!context.Posts.Any())
             {
-                context.Posts.AddRange(
-                    new Post { Created = DateTime.Now, Updated = DateTime.Now, Title = "SeedTitle", SubTitle = "SeedSubTitle", CreatedByUserId = "SeedUserId", Body = LongBody() },
-                    new Post { Created = DateTime.Now, Updated = DateTime.Now, Title = "SeedTitle", SubTitle = "SeedSubTitle", CreatedByUserId = "SeedUserId" });
-                context.SaveChanges();
+                //context.Posts.AddRange(
+                //    new Post { Created = DateTime.Now, Updated = DateTime.Now, Title = "SeedTitle", Subtitle = "SeedSubTitle", CreatedByUserId = "SeedUserId", Body = LongBody() },
+                //    new Post { Created = DateTime.Now, Updated = DateTime.Now, Title = "SeedTitle", Subtitle = "SeedSubTitle", CreatedByUserId = "SeedUserId" });
+                //context.SaveChanges();
             }
         }
 

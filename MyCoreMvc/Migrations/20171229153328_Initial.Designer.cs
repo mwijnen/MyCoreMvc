@@ -10,7 +10,7 @@ using System;
 namespace MyCoreMvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171217204541_Initial")]
+    [Migration("20171229153328_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,22 +22,26 @@ namespace MyCoreMvc.Migrations
 
             modelBuilder.Entity("MyCoreMvc.Models.Comment", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("VersionId")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(450);
 
                     b.Property<string>("Contents");
 
-                    b.Property<DateTime>("Created");
+                    b.Property<DateTime>("DateTimeStamp");
 
-                    b.Property<string>("CreatedByUserId");
+                    b.Property<DateTime>("Deleted");
 
-                    b.Property<string>("PostId");
+                    b.Property<string>("Id")
+                        .HasMaxLength(450);
 
-                    b.Property<DateTime>("Updated");
+                    b.Property<string>("PostId")
+                        .HasMaxLength(450);
 
-                    b.Property<string>("UpdatedByUserId");
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450);
 
-                    b.HasKey("Id");
+                    b.HasKey("VersionId");
 
                     b.HasIndex("PostId");
 
@@ -46,8 +50,9 @@ namespace MyCoreMvc.Migrations
 
             modelBuilder.Entity("MyCoreMvc.Models.Post", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("VersionId")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(450);
 
                     b.Property<string>("Abstract");
 
@@ -55,19 +60,21 @@ namespace MyCoreMvc.Migrations
 
                     b.Property<string>("CategoryId");
 
-                    b.Property<DateTime>("Created");
+                    b.Property<DateTime>("DateTimeStamp");
 
-                    b.Property<string>("CreatedByUserId");
+                    b.Property<DateTime>("Deleted");
 
-                    b.Property<string>("SubTitle");
+                    b.Property<string>("Id")
+                        .HasMaxLength(450);
+
+                    b.Property<string>("Subtitle");
 
                     b.Property<string>("Title");
 
-                    b.Property<DateTime>("Updated");
+                    b.Property<string>("UserId")
+                        .HasMaxLength(450);
 
-                    b.Property<string>("UpdatedByUserId");
-
-                    b.HasKey("Id");
+                    b.HasKey("VersionId");
 
                     b.ToTable("Posts");
                 });

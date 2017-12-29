@@ -28,7 +28,7 @@ Generic Functionality:
 Specific Functionality:
 [ ] CRUD blog
 [ ] CRUD comments
-[ ] implement routing
+[X] implement routing
 [ ] implement routing tags for forms
  
 Database stucture:
@@ -38,7 +38,9 @@ Database stucture:
 [ ] When objects are stored while held in the context of their parent object, how does EF handle this?
 
 
-
+EF operations
+Add-Migration Initial -Context ApplicationDbContext
+Update-Database -Context ApplicationDbContext
 
 
 

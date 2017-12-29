@@ -11,5 +11,7 @@ namespace MyCoreMvc.Models
 
         IEnumerable<Comment> Comments { get; }
 
+        void SavePost(Post post);
+
     }
 }

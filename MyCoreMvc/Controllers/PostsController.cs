@@ -16,10 +16,23 @@ namespace MyCoreMvc.Controllers
         public ViewResult Index() => View(repository.Posts);
 
         [HttpGet("[controller]/new")]
-        public ViewResult New() => View("Form");
-
-        [HttpPost]
-        public ViewResult Create() => View("Post");
+        public ViewResult New() => View("Form", new Post());
+        
+        [HttpPost("[controller]/"), ValidateAntiForgeryToken]
+        public IActionResult Create(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.SetId();
+                post.SetVersion();
+                repository.SavePost(post);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Form", post);
+            }
+        }
 
         [HttpGet("[controller]/{id}")]
         public ViewResult Show(string id) => View("Post");

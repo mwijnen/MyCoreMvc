@@ -17,6 +17,12 @@ namespace MyCoreMvc.Models
 
         public IEnumerable<Post> Posts => context.Posts;
 
+        public void SavePost(Post post)
+        {
+            context.Posts.Add(post);
+            context.SaveChanges();
+        }
+
         public IEnumerable<Comment> Comments => context.Comments;
 
     }

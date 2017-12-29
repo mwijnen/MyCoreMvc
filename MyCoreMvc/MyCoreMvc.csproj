@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\AppIdentityDb\" />
+    <Folder Include="Migrations\ApplicationDb\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

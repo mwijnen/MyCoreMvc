@@ -12,42 +12,42 @@ namespace MyCoreMvc.Migrations
                 name: "Posts",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    VersionId = table.Column<string>(maxLength: 450, nullable: false),
                     Abstract = table.Column<string>(nullable: true),
                     Body = table.Column<string>(nullable: true),
                     CategoryId = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTime>(nullable: false),
-                    CreatedByUserId = table.Column<string>(nullable: true),
-                    SubTitle = table.Column<string>(nullable: true),
+                    DateTimeStamp = table.Column<DateTime>(nullable: false),
+                    Deleted = table.Column<DateTime>(nullable: false),
+                    Id = table.Column<string>(maxLength: 450, nullable: true),
+                    Subtitle = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
-                    Updated = table.Column<DateTime>(nullable: false),
-                    UpdatedByUserId = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(maxLength: 450, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.PrimaryKey("PK_Posts", x => x.VersionId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    VersionId = table.Column<string>(maxLength: 450, nullable: false),
                     Contents = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTime>(nullable: false),
-                    CreatedByUserId = table.Column<string>(nullable: true),
-                    PostId = table.Column<string>(nullable: true),
-                    Updated = table.Column<DateTime>(nullable: false),
-                    UpdatedByUserId = table.Column<string>(nullable: true)
+                    DateTimeStamp = table.Column<DateTime>(nullable: false),
+                    Deleted = table.Column<DateTime>(nullable: false),
+                    Id = table.Column<string>(maxLength: 450, nullable: true),
+                    PostId = table.Column<string>(maxLength: 450, nullable: true),
+                    UserId = table.Column<string>(maxLength: 450, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.VersionId);
                     table.ForeignKey(
                         name: "FK_Comments_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
-                        principalColumn: "Id",
+                        principalColumn: "VersionId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
