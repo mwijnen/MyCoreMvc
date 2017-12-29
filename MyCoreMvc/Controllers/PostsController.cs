@@ -17,7 +17,7 @@ namespace MyCoreMvc.Controllers
 
         [HttpGet("[controller]/new")]
         public ViewResult New() => View("Form", new Post());
-        
+
         [HttpPost("[controller]/"), ValidateAntiForgeryToken]
         public IActionResult Create(Post post)
         {
@@ -38,10 +38,30 @@ namespace MyCoreMvc.Controllers
         public ViewResult Show(string id) => View("Post");
 
         [HttpGet("[controller]/{id}/edit")]
-        public ViewResult Edit(string id) => View("Form");
+        public ViewResult Edit(string id)
+        {
+            Post post = repository.GetPost(id);
+            if (post == null)
+            {
+                post = new Post();
+            }
+            return View("Form", post);
+        }
 
-        [HttpPatch]
-        public ViewResult Update() => View("Form");
+        [HttpPost("[controller]/{id}")]
+        public IActionResult Update(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.SetVersion();
+                repository.SavePost(post);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Form", post);
+            }
+        }
 
         [HttpDelete]
         public ViewResult Destroy() => View("Index");
@@ -58,5 +78,5 @@ namespace MyCoreMvc.Controllers
 //GET	        /models/:id/edit        models#edit	        return an HTML form for editing a model
 //GET	        /models/:id             models#show	        display a specific model
 //POST	        /models                 models#create	    create a new model
-//PATCH/PUT	    /models/:id             models#update	    update a specific model
+//POST  	    /models/:id             models#update	    update a specific model
 //DELETE	    /models/:id             models#destroy	    delete a specific model

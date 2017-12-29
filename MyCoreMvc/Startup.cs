@@ -64,11 +64,6 @@ namespace MyCoreMvc
                     RequestPath = new PathString("/vendor")
                 });
             }
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
         }
     }
 }

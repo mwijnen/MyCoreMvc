@@ -26,11 +26,11 @@ Generic Functionality:
 [ ] notifications, alerts, messages
 
 Specific Functionality:
-[ ] CRUD blog
+[ ] CRUD blog (index, new, create, edit, update, delete), layout, validations
 [ ] CRUD comments
 [X] implement routing
 [ ] implement routing tags for forms
- 
+
 Database stucture:
 [ ] Setup CRUD operations
 [ ] Understand how does linking of objects work (Ruby has_many equivalent)

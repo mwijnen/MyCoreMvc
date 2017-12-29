@@ -23,6 +23,11 @@ namespace MyCoreMvc.Models
             context.SaveChanges();
         }
 
+        public Post GetPost(string id)
+        {
+            return context.Posts.Where(p => p.Id == id).OrderByDescending(p => p.DateTimeStamp).FirstOrDefault();
+        }
+
         public IEnumerable<Comment> Comments => context.Comments;
 
     }

@@ -27,8 +27,8 @@
                 <td>@p.Title</td>
                 <td>@p.Subtitle</td>
                 <td>@p.CategoryId</td>
-                <td>@p.Abstract</td>
-                <td>@p.Body</td>
+                <td>@p.Abstract.Truncate(100)</td>
+                <td>@p.Body.Truncate(100)</td>
             </tr>
         }
     </tbody>

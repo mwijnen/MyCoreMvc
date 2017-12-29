@@ -22,8 +22,13 @@ namespace MyCoreMvc.Models
 
         public DateTime Deleted { get; set; }
 
-
-
+        public string FormAction
+        {
+            get
+            {
+                return (Id == null || Id == string.Empty) ? "Create" : "Update";
+            }
+        }
 
         public void SetId()
         {

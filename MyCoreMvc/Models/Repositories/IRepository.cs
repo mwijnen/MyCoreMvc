@@ -13,5 +13,6 @@ namespace MyCoreMvc.Models
 
         void SavePost(Post post);
 
+        Post GetPost(string id);
     }
 }
