@@ -42,6 +42,12 @@ EF operations
 Add-Migration Initial -Context ApplicationDbContext
 Update-Database -Context ApplicationDbContext
 
+Identity Dependencies:
+Microsoft.Extensions.Cconfiguration
+Microsoft.Extensions.Cconfiguration.Json
+Microsoft.AspNetCore.Identity.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Tools
 
 
 
