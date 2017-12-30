@@ -18,12 +18,17 @@ Layout:
 
 Generic Functionality:
 [ ] Photo uploading and cropping
-[ ] User sign up, login, request password reset
 [ ] Define and assign user claims (roles)
 [ ] Send email
 [ ] Push notifications (Websockets)
 [ ] AJAX requests
 [ ] notifications, alerts, messages
+
+Authentication Functionality
+[ ] User sign up, login, request password reset
+[ ] Configure sign-in manager, create authentication token and authentication cookie
+[ ] Create email verification token, create/send email and create verification controller
+[ ] Create password reset token, create/send email create reset controller and form, resend reset password email
 
 Specific Functionality:
 [ ] CRUD blog (index, new, create, edit, update, delete), layout, validations
