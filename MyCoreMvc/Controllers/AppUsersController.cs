@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyCoreMvc.Models;
+using MyCoreMvc.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,12 +55,29 @@ namespace MyCoreMvc.Controllers
             //await appUserManager.AddClaimAsync(newUser, new Claim(ClaimTypes.Role, "Administrator"));
             
             string emailConfirmationToken = await appUserManager.GenerateEmailConfirmationTokenAsync(newUser);
-            //string tokenVerificationUrl = Url.Action("VerifyEmail", "Account", new { id = newUser.Id, token = emailConfirmationToken }, Request.Scheme);
 
+            string tokenVerificationUrl = Url.Action("VerifyEmail", "AppUsers", new { id = newUser.Id, token = emailConfirmationToken }, Request.Scheme);
+
+            LocalEmailClient.SendEmail("email confirmation", "AppUser", "Register", tokenVerificationUrl);
             //await _messageService.Send(email, "Verify your email", $"Click <a href=\"{tokenVerificationUrl}\">here</a> to verify your email");
 
             //return Content("Check your email for a verification link");
 
+            return RedirectToAction(actionName: "Index", controllerName: "Home");
+        }
+
+        [HttpGet("[controller]/[action]/{id}")]
+        public async Task<IActionResult> VerifyEmail(string id, string token)
+        {
+            var user = await appUserManager.FindByIdAsync(id);
+            if (user == null)
+                throw new InvalidOperationException();
+
+            var emailConfirmationResult = await appUserManager.ConfirmEmailAsync(user, token);
+            if (!emailConfirmationResult.Succeeded)
+                return Content(emailConfirmationResult.Errors.Select(error => error.Description).Aggregate((allErrors, error) => allErrors += ", " + error));
+
+            //return Content("Email confirmed, you can now log in");
             return RedirectToAction(actionName: "Index", controllerName: "Home");
         }
 
@@ -84,7 +102,32 @@ namespace MyCoreMvc.Controllers
 
         //update
 
-        //delete
+        [HttpPost("[controller]/{id}/delete")]
+        public async Task<IActionResult> Destroy(string id)
+        {
+            AppUser user = await appUserManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                IdentityResult result = await appUserManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "User Not Found");
+            }
+            return View("Index", appUserManager.Users);
+        }
     }
 }
 

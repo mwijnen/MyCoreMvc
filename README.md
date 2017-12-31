@@ -29,6 +29,7 @@ Authentication Functionality
 [ ] Configure sign-in manager, create authentication token and authentication cookie
 [ ] Create email verification token, create/send email and create verification controller
 [ ] Create password reset token, create/send email create reset controller and form, resend reset password email
+[ ] Create overview of users and Delete functionality
 
 Specific Functionality:
 [ ] CRUD blog (index, new, create, edit, update, delete), layout, validations
