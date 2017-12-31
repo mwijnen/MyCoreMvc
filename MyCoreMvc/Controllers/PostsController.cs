@@ -48,7 +48,7 @@ namespace MyCoreMvc.Controllers
             return View("Form", post);
         }
 
-        [HttpPost("[controller]/{id}")]
+        [HttpPost("[controller]/{id}"), ValidateAntiForgeryToken]
         public IActionResult Update(Post post)
         {
             if (ModelState.IsValid)

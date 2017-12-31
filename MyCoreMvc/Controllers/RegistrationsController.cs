@@ -23,16 +23,16 @@ namespace MyCoreMvc.Controllers
         [Route("Register")]
         public IActionResult New()
         {
-            return View(new Registration());
+            return View("Form", new Registration());
         }
 
-        [HttpPost("[controller]/[action]")]
+        [HttpPost("[controller]/[action]"), ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Registration registrationParams)
         {
             if (registrationParams.Password != registrationParams.RetypedPassword)
             {
                 ModelState.AddModelError(string.Empty, "Password don't match");
-                return View("New", registrationParams);
+                return View("Form", registrationParams);
             }
 
             User newUser = new User
@@ -48,7 +48,7 @@ namespace MyCoreMvc.Controllers
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-                return View("New", registrationParams);
+                return View("Form", registrationParams);
             }
 
             //await appUserManager.AddClaimAsync(newUser, new Claim(ClaimTypes.Role, "Administrator"));
