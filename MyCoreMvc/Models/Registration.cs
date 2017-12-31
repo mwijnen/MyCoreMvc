@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 
 namespace MyCoreMvc.Models
 {
-    public class RegistrationParams
+    public class Registration
     {
         public string Email { get; set; }
+
         public string Password { get; set; }
+
         public string RetypedPassword { get; set; }
+
     }
 }
