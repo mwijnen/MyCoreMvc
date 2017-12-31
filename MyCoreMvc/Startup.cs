@@ -33,7 +33,7 @@ namespace MyCoreMvc
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Application:ConnectionString"]));
 
             services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:Identity:ConnectionString"]));
-            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
             services.AddTransient<IRepository, EFRepository>();
             services.AddMvc();

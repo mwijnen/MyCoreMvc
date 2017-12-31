@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyCoreMvc.Models
 {
-    public class AppUser : IdentityUser
+    public class User : IdentityUser
     {
-        public AppUser() : base() { }
+        public User() : base() { }
 
         public bool AdditionalParameter { get; set; }
     }

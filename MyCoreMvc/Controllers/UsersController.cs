@@ -9,26 +9,26 @@ using System.Threading.Tasks;
 
 namespace MyCoreMvc.Controllers
 {
-    public class AppUsersController : Controller
+    public class UsersController : Controller
     {
-        private readonly UserManager<AppUser> appUserManager;
+        private readonly UserManager<User> appUserManager;
 
-        private readonly SignInManager<AppUser> signInManager;
+        private readonly SignInManager<User> signInManager;
 
-        public AppUsersController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.appUserManager = userManager;
             this.signInManager = signInManager;
         }
 
-        [HttpGet("[controller]/[action]")]
-        public IActionResult Register()
+        [Route("Register")]
+        public IActionResult New()
         {
             return View();
         }
 
         [HttpPost("[controller]/[action]")]
-        public async Task<IActionResult> Register(RegistrationParams registrationParams)
+        public async Task<IActionResult> Create(RegistrationParams registrationParams)
         {
             if (registrationParams.Password != registrationParams.RetypedPassword)
             {
@@ -36,7 +36,7 @@ namespace MyCoreMvc.Controllers
                 return View();
             }
 
-            AppUser newUser = new AppUser
+            User newUser = new User
             {
                 UserName = registrationParams.Email,
                 Email = registrationParams.Email
@@ -56,9 +56,9 @@ namespace MyCoreMvc.Controllers
             
             string emailConfirmationToken = await appUserManager.GenerateEmailConfirmationTokenAsync(newUser);
 
-            string tokenVerificationUrl = Url.Action("VerifyEmail", "AppUsers", new { id = newUser.Id, token = emailConfirmationToken }, Request.Scheme);
+            string tokenVerificationUrl = Url.Action("VerifyEmail", "Users", new { id = newUser.Id, token = emailConfirmationToken }, Request.Scheme);
 
-            LocalEmailClient.SendEmail("email confirmation", "AppUser", "Register", tokenVerificationUrl);
+            LocalEmailClient.SendEmail("email confirmation", "User", "Register", tokenVerificationUrl);
             //await _messageService.Send(email, "Verify your email", $"Click <a href=\"{tokenVerificationUrl}\">here</a> to verify your email");
 
             //return Content("Check your email for a verification link");
@@ -105,7 +105,7 @@ namespace MyCoreMvc.Controllers
         [HttpPost("[controller]/{id}/delete")]
         public async Task<IActionResult> Destroy(string id)
         {
-            AppUser user = await appUserManager.FindByIdAsync(id);
+            User user = await appUserManager.FindByIdAsync(id);
 
             if (user != null)
             {
