@@ -33,7 +33,21 @@ namespace MyCoreMvc
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Application:ConnectionString"]));
 
             services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:Identity:ConnectionString"]));
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+
+            services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                opts.Password.RequiredLength = 6;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
+                opts.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+            
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login";
+            });
 
             services.AddTransient<IRepository, EFRepository>();
             services.AddMvc();
@@ -47,8 +61,8 @@ namespace MyCoreMvc
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
-            app.UseIdentity();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}");

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyCoreMvc.Models;
 using Microsoft.AspNetCore.Identity;
 using MyCoreMvc.Utilities;
+using System.Security.Claims;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -51,7 +52,7 @@ namespace MyCoreMvc.Controllers
                 return View("Form", registrationParams);
             }
 
-            //await appUserManager.AddClaimAsync(newUser, new Claim(ClaimTypes.Role, "Administrator"));
+            await userManager.AddClaimAsync(newUser, new Claim(ClaimTypes.Role, "ApplicationUser"));
 
             string emailConfirmationToken = await userManager.GenerateEmailConfirmationTokenAsync(newUser);
 
@@ -82,3 +83,5 @@ namespace MyCoreMvc.Controllers
 
     }
 }
+
+//source: https://github.com/ruidfigueiredo/AspNetIdentityFromScratch/blob/master/Controllers/AccountController.cs

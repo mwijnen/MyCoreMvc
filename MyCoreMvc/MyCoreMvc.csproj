@@ -5,7 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="LocalEmails\" />
+    <Compile Remove="LocalEmails\**" />
+    <Content Remove="LocalEmails\**" />
+    <EmbeddedResource Remove="LocalEmails\**" />
+    <None Remove="LocalEmails\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
@@ -15,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Tools" Version="1.1.0-preview4-final" />

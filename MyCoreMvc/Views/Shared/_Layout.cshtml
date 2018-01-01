@@ -36,6 +36,21 @@
     <div style="margin-top:60px;width:100%;">
         @RenderBody()
     </div>
+    <div>
+        <h4>Http Request data</h4>
+        @if (ViewBag.IsAuthenticated != null)
+        {
+            <div>User.IsAuthenticated: @ViewBag.IsAuthenticated</div>
+        }
+        @if (ViewBag.Cookies != null)
+        {
+            @foreach (KeyValuePair<string, string> cookie in ((Dictionary<string, string>)ViewBag.Cookies))
+            {
+                <div>Cookie Label: @cookie.Key</div>
+                <div>Cookie Value: @cookie.Value</div>
+            }
+        }
+    </div>
 </body>
 </html>
 
