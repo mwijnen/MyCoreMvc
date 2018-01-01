@@ -25,15 +25,20 @@ Generic Functionality:
 [ ] notifications, alerts, messages
 
 Authentication Functionality
-[ ] User sign up, login, request password reset
-[ ] Configure sign-in manager, create authentication token and authentication cookie
-[ ] Create email verification token, create/send email and create verification controller
+[X] User sign up, login 
+[ ] Request password reset
+[X] Configure sign-in manager, create authentication token and authentication cookie
+[X] Create email verification token and create verification controller
+[ ] Create/send email 
 [ ] Create password reset token, create/send email create reset controller and form, resend reset password email
-[ ] Create overview of users and Delete functionality
+[X] Create overview of users and add Delete functionality
 [ ] Handle error messages
+[ ] Create user messages, notifications, alerts, warnings
+[ ] Create layout for user messages using Bootstrap
 
 Specific Functionality:
-[ ] CRUD blog (index, new, create, edit, update, delete), layout, validations
+[X] CRUD blog (index, new, create, edit, update, delete), layout
+[ ] Implement Model validations
 [ ] CRUD comments
 [X] implement routing
 [ ] implement routing tags for forms

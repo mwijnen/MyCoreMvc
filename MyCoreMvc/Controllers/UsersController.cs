@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyCoreMvc.Models;
 using MyCoreMvc.Utilities;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace MyCoreMvc.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly UserManager<User> userManager;

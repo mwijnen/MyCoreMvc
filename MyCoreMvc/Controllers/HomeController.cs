@@ -12,23 +12,6 @@ namespace MyCoreMvc.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        //[AllowAnonymous]
-        public ViewResult Index()
-        {
-            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
-            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
-            
-            Dictionary<string, string> cookies = new Dictionary<string, string>();
-            foreach (string cookieKey in Request.Cookies.Keys)
-            {
-                cookies.Add(cookieKey, Request.Cookies[cookieKey]);
-            }
-            if (cookies.Count > 0)
-            {
-                ViewBag.Cookies = cookies;
-            }
-
-            return View();
-        }
+        public ViewResult Index() => View();
     }
 }

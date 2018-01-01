@@ -15,6 +15,7 @@
             <input asp-for=@Model.RememberMe type="checkbox" class="form-control" />
         </div>
 
+        <input asp-for=@Model.RedirectUrl type="hidden" value=@ViewData["ReturnUrl"] />
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

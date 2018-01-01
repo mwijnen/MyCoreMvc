@@ -7,11 +7,13 @@ using MyCoreMvc.Models;
 using Microsoft.AspNetCore.Identity;
 using MyCoreMvc.Utilities;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MyCoreMvc.Controllers
 {
+    [Authorize]
     public class RegistrationsController : Controller
     {
         private UserManager<User> userManager;
@@ -21,13 +23,15 @@ namespace MyCoreMvc.Controllers
             this.userManager = userManager;
         }
         
+        [AllowAnonymous]
         [Route("Register")]
         public IActionResult New()
         {
             return View("Form", new Registration());
         }
 
-        [HttpPost("[controller]/[action]"), ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        [HttpPost("[controller]/[action]")]
         public async Task<IActionResult> Create(Registration registrationParams)
         {
             if (registrationParams.Password != registrationParams.RetypedPassword)
@@ -66,6 +70,7 @@ namespace MyCoreMvc.Controllers
             return RedirectToAction(actionName: "Index", controllerName: "Users");
         }
 
+        [AllowAnonymous]
         [HttpGet("[controller]/[action]/{id}")]
         public async Task<IActionResult> VerifyEmail(string id, string token)
         {

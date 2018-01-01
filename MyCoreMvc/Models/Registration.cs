@@ -13,5 +13,6 @@ namespace MyCoreMvc.Models
 
         public string RetypedPassword { get; set; }
 
+        public string RedirectUrl { get; set; }
     }
 }

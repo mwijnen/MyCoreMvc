@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyCoreMvc.Models;
 
 namespace MyCoreMvc.Controllers
 {
+    [Authorize]
     public class CommentsController : Controller
     {
         private IRepository repository;

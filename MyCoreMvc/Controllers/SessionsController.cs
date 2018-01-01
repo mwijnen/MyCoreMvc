@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using MyCoreMvc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyCoreMvc.Controllers
 {
+
+    [Authorize]
     public class SessionsController : Controller
     {
         private readonly UserManager<User> userManager;
@@ -20,15 +23,16 @@ namespace MyCoreMvc.Controllers
             this.signInManager = signInManager;
         }
 
+        [AllowAnonymous]
         [Route("Login")]
-        public IActionResult New()
+        public IActionResult New(string returnUrl = null)
         {
-            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
-            int numberOfCookies = Request.Cookies.Count();
+            ViewData["ReturnUrl"] = returnUrl;
             return View("Form");
         }
 
-        [HttpPost("[controller]/"), ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        [HttpPost("[controller]/")]
         public async Task<IActionResult> Create(Session session)
         {
             var user = await userManager.FindByEmailAsync(session.Email);
@@ -53,7 +57,11 @@ namespace MyCoreMvc.Controllers
                 return View("Form");
             }
 
-            return RedirectToAction("Index", "Posts");
+            if (session.RedirectUrl != null)
+            {
+                return Redirect(session.RedirectUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         [Route("Logout")]

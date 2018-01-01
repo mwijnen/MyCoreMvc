@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyCoreMvc.Models;
 
 namespace MyCoreMvc.Controllers
 {
+    [Authorize]
     public class PostsController : Controller
     {
         private IRepository repository;
@@ -18,7 +20,7 @@ namespace MyCoreMvc.Controllers
         [HttpGet("[controller]/new")]
         public ViewResult New() => View("Form", new Post());
 
-        [HttpPost("[controller]/"), ValidateAntiForgeryToken]
+        [HttpPost("[controller]/")]
         public IActionResult Create(Post post)
         {
             if (ModelState.IsValid)
@@ -48,7 +50,7 @@ namespace MyCoreMvc.Controllers
             return View("Form", post);
         }
 
-        [HttpPost("[controller]/{id}"), ValidateAntiForgeryToken]
+        [HttpPost("[controller]/{id}")]
         public IActionResult Update(Post post)
         {
             if (ModelState.IsValid)
