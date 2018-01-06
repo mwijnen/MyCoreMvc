@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.Google;
 
 namespace MyCoreMvc
 {
@@ -44,7 +45,13 @@ namespace MyCoreMvc
                 opts.Password.RequireDigit = false;
                 opts.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
-            
+
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = "Authentication:Google:ClientSecret";
+            });
+
             services.AddTransient<IRepository, EFRepository>();
             services.AddMvc(options =>
             {

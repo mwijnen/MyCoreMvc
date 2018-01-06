@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyCoreMvc.Models;
 using MyCoreMvc.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -23,6 +23,48 @@ namespace MyCoreMvc.Controllers
             this.signInManager = signInManager;
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult GoogleLogin(string returnUrl)
+        {
+            string redirectUrl = Url.Action("GoogleResponse", "Account", new { ReturnUrl = returnUrl });
+            AuthenticationProperties properties = signInManager.ConfigureExternalAuthenticationProperties("Google", redirectUrl);
+            return new ChallengeResult("Google", properties);
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> GoogleResponse(string returnUrl = "/")
+        {
+            ExternalLoginInfo info = await signInManager.GetExternalLoginInfoAsync();
+            if (info == null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+            var result = await signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
+            if (result.Succeeded)
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                User user = new User
+                {
+                    Email = info.Principal.FindFirst(ClaimTypes.Email).Value,
+                    UserName = info.Principal.FindFirst(ClaimTypes.Email).Value
+                };
+                IdentityResult identityResult = await userManager.CreateAsync(user);
+                if (identityResult.Succeeded)
+                {
+                    identityResult = await userManager.AddLoginAsync(user, info);
+                    if (identityResult.Succeeded)
+                    {
+                        await signInManager.SignInAsync(user, false);
+                        return Redirect(returnUrl);
+                    }
+                }
+                return Redirect("/");
+            }
+        }
 
         [AllowAnonymous]
         [HttpGet]
@@ -177,7 +219,7 @@ namespace MyCoreMvc.Controllers
             var resetPasswordResult = await userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
             if (!resetPasswordResult.Succeeded)
             {
-                
+
 
                 foreach (var error in resetPasswordResult.Errors)
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -197,5 +239,5 @@ namespace MyCoreMvc.Controllers
     }
 }
 
-
+//966835248687-mlneuvlvmq5igl83rv5p9h405fv4c42k.apps.googleusercontent.com
 //source: https://github.com/ruidfigueiredo/AspNetIdentityFromScratch/blob/master/Controllers/AccountController.cs
