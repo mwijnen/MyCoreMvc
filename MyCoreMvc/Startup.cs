@@ -45,11 +45,6 @@ namespace MyCoreMvc
                 opts.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
             
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Login";
-            });
-
             services.AddTransient<IRepository, EFRepository>();
             services.AddMvc(options =>
             {
@@ -69,7 +64,7 @@ namespace MyCoreMvc
             app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
-                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}");
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             //MW: serving files for twitter bootstrap when in development mode - Add support for node_modules but only during development **temporary**

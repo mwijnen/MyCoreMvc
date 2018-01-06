@@ -1,75 +1,74 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
-using MyCoreMvc.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Identity;
+//using MyCoreMvc.Models;
+//using Microsoft.AspNetCore.Authorization;
 
-namespace MyCoreMvc.Controllers
-{
+//namespace MyCoreMvc.Controllers
+//{
 
-    [Authorize]
-    public class SessionsController : Controller
-    {
-        private readonly UserManager<User> userManager;
+//    [Authorize]
+//    public class SessionsController : Controller
+//    {
+//        private readonly UserManager<User> userManager;
 
-        private readonly SignInManager<User> signInManager;
-        
-        public SessionsController(UserManager<User> userManager, SignInManager<User> signInManager)
-        {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-        }
+//        private readonly SignInManager<User> signInManager;
 
-        [AllowAnonymous]
-        [Route("Login")]
-        public IActionResult New(string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View("Form");
-        }
+//        public SessionsController(UserManager<User> userManager, SignInManager<User> signInManager)
+//        {
+//            this.userManager = userManager;
+//            this.signInManager = signInManager;
+//        }
 
-        [AllowAnonymous]
-        [HttpPost("[controller]/")]
-        public async Task<IActionResult> Create(Session session)
-        {
-            var user = await userManager.FindByEmailAsync(session.Email);
-            if (user == null)
-            {
-                ModelState.AddModelError(string.Empty, "Invalid login");
-                return View("Form");
-            }
-            if (!user.EmailConfirmed)
-            {
-                ModelState.AddModelError(string.Empty, "Confirm your email first");
-                return View("Form");
-            }
+//        [AllowAnonymous]
+//        [Route("Login")]
+//        public IActionResult New(string redirectUrl = null)
+//        {
+//            return View("Form", new Session() { RedirectUrl = redirectUrl });
+//        }
 
-            Microsoft.AspNetCore.Identity.SignInResult passwordSignInResult = await signInManager.PasswordSignInAsync(user,
-                session.Password, isPersistent: session.RememberMe, lockoutOnFailure: false);
+//        [AllowAnonymous]
+//        [HttpPost("[controller]/")]
+//        public async Task<IActionResult> Create(Session session)
+//        {
+//            var user = await userManager.FindByEmailAsync(session.Email);
+//            if (user == null)
+//            {
+//                ModelState.AddModelError(string.Empty, "Invalid login");
+//                return View("Form", session);
+//            }
+//            if (!user.EmailConfirmed)
+//            {
+//                ModelState.AddModelError(string.Empty, "Confirm your email first");
+//                return View("Form");
+//            }
 
-            if (!passwordSignInResult.Succeeded)
-            {
-                await userManager.AccessFailedAsync(user);
-                ModelState.AddModelError(string.Empty, "Invalid login");
-                return View("Form");
-            }
+//            Microsoft.AspNetCore.Identity.SignInResult passwordSignInResult = await signInManager.PasswordSignInAsync(user,
+//                session.Password, isPersistent: session.RememberMe, lockoutOnFailure: false);
 
-            if (session.RedirectUrl != null)
-            {
-                return Redirect(session.RedirectUrl);
-            }
-            return RedirectToAction("Index", "Home");
-        }
+//            if (!passwordSignInResult.Succeeded)
+//            {
+//                await userManager.AccessFailedAsync(user);
+//                ModelState.AddModelError(string.Empty, "Invalid login");
+//                return View("Form", session);
+//            }
 
-        [Route("Logout")]
-        public async Task<IActionResult> Destroy()
-        {
-            await signInManager.SignOutAsync();
-            return RedirectToAction(nameof(HomeController.Index), "Home");
-        }
+//            if (session.RedirectUrl != null)
+//            {
+//                return Redirect(session.RedirectUrl);
+//            }
+//            return RedirectToAction("Index", "Home");
+//        }
 
-    }
-}
+//        [Route("Logout")]
+//        public async Task<IActionResult> Destroy()
+//        {
+//            await signInManager.SignOutAsync();
+//            return RedirectToAction(nameof(HomeController.Index), "Home");
+//        }
+
+//    }
+//}

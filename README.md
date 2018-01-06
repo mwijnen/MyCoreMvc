@@ -3,13 +3,13 @@
 Things that need to be done:
 
 Deployment:
-[ ] Deployment on linux server (Install .net Core Mvc on linus, build application, run application on linus, setup Httpd with Core Mvc application)
+[!] Deployment on linux server (Install .net Core Mvc on linus, build application, run application on linus, setup Httpd with Core Mvc application)
 [ ] Setup Production, Testing and Development environments (database structure, assets)
 
 Security:
 [ ] Security (authentication and identification, create SSL certificate, setup TLS)
 [ ] Multi factor authentication
-[ ] Third party authentication
+[!] Third party authentication
 [ ] Protection for XSS attacks by using/implementing the equivalent of Rails authentication_token
 [ ] Implement sand for passwords to protect against rainbow attacks
  
@@ -22,15 +22,16 @@ Generic Functionality:
 [ ] Send email
 [ ] Push notifications (Websockets)
 [ ] AJAX requests
-[ ] notifications, alerts, messages
+[!] notifications, alerts, messages
 
 Authentication Functionality
 [X] User sign up, login 
-[ ] Request password reset
+[X] Request password reset
 [X] Configure sign-in manager, create authentication token and authentication cookie
 [X] Create email verification token and create verification controller
 [ ] Create/send email 
-[ ] Create password reset token, create/send email create reset controller and form, resend reset password email
+[X] Create password reset token, create email create reset controller and form
+[ ] Send password reset email and create resend reset password email link
 [X] Create overview of users and add Delete functionality
 [ ] Handle error messages
 [ ] Create user messages, notifications, alerts, warnings

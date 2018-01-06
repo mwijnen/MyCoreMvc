@@ -24,7 +24,13 @@ namespace MyCoreMvc.Controllers
         }
 
         public ViewResult Index() => View(userManager.Users);
-        
+
+        [HttpGet]
+        public ViewResult ForgotPassword() => View();
+
+        [HttpPost]
+        public ViewResult ForgotPassword(string email) => View();
+
         //Forgot password (request reset form)
         //Forgot password (create reset email)
         //ResetPassword (reset password form)
