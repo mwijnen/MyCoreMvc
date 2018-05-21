@@ -11,11 +11,12 @@ namespace MyCoreMvc.Utilities
 
         public static void SendEmail(string description, string controller, string action, string actionUrl)
         {
-            string root = @"C:\Users\MWijnen\Desktop";
+            string root = @"C:\Users\wijne\Desktop";
             string emailDirectory = @"\LocalEmails\";
             DateTime now = DateTime.Now;
             string path = emailDirectory + description + "_" + now.ToShortDateString() + "_" + now.ToShortTimeString() + ".email";
             path = path.Replace(' ', '_');
+            path = path.Replace('/', '-');
             path = path.Replace(':', '-');
             StringBuilder emailBuilder = new StringBuilder();
             emailBuilder.AppendLine(now.ToLongTimeString());

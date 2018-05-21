@@ -10,14 +10,14 @@ using System;
 namespace MyCoreMvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171229153328_Initial")]
+    [Migration("20180520211433_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
+                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("MyCoreMvc.Models.Comment", b =>

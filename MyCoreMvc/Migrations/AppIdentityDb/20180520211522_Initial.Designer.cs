@@ -12,14 +12,14 @@ using System;
 namespace MyCoreMvc.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20171230104759_AddAdditionalParameterToAppUser")]
-    partial class AddAdditionalParameterToAppUser
+    [Migration("20180520211522_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
+                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -186,15 +186,15 @@ namespace MyCoreMvc.Migrations.AppIdentityDb
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MyCoreMvc.Models.AppUser", b =>
+            modelBuilder.Entity("MyCoreMvc.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<bool>("AdditionalParameter");
 
-                    b.ToTable("AppUser");
+                    b.ToTable("User");
 
-                    b.HasDiscriminator().HasValue("AppUser");
+                    b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

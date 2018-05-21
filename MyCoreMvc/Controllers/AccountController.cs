@@ -70,7 +70,7 @@ namespace MyCoreMvc.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View("Form", new Registration());
+            return View("Register", new Registration());
         }
 
         [AllowAnonymous]
