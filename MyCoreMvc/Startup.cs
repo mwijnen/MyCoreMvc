@@ -32,11 +32,14 @@ namespace MyCoreMvc
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddEntityFrameworkNpgsql();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration["Data:AppIdentity:ConnectionString:PostgreSql"]));
             //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Application:ConnectionString:SqlServer"]));
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(Configuration["Data:Application:ConnectionString:Sqlite"]));
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(Configuration["Data:Application:ConnectionString:Sqlite"]));
 
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseNpgsql(Configuration["Data:AppIdentity:ConnectionString:PostgreSql"]));
             //services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:AppIdentity:ConnectionString:SqlServer"]));
-            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlite(Configuration["Data:AppIdentity:ConnectionString:Sqlite"]));
+            //services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlite(Configuration["Data:AppIdentity:ConnectionString:Sqlite"]));
 
             services.AddIdentity<User, IdentityRole>(opts =>
             {
@@ -59,6 +62,7 @@ namespace MyCoreMvc
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
